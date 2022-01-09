@@ -1,38 +1,347 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+:root {
+    --logo: "raleway";
+    --primary3: #353535;
+}
+
+body {
+    font-family: "poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-size: 16px;
+    color: white;
+}
+
+a {
+    color: #00e5d6;
+}
+
+input,
+textarea {
+    border: 0;
+    border-radius: 0.5rem;
+    outline: none;
+}
+
+button {
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    color: rgb(177, 229, 255);
+}
+
+button:hover {
+    color: rgb(196, 216, 255);
+}
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar:hover {
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-track {
+    background: inherit;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #424242;
+}
+
+.app-main-note-preview::-webkit-scrollbar-thumb {
+    background: #525252;
+}
+
+.app-sidebar-notes::-webkit-scrollbar {
+    display: none;
+}
+
 .App {
-  text-align: center;
+    display: flex;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* SIDEBAR STYLES */
+.menu {
+    display: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.menu:hover {
+    display: block;
+    width: 30px;
+    padding: 1rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.content {
+    display: flex;
 }
 
-.App-link {
-  color: #61dafb;
+.open {
+    display: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app-sidebar {
+    background: #2c2c2c;
+    min-width: 450px;
+    height: 100vh;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: 250ms ease-in-out;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    background: #212121;
+    width: 5rem;
+    height: 100vh;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+    transition: 250ms;
+}
+
+.icon:hover {
+    background: #585858;
+}
+
+.spacer {
+    padding-top: 1rem;
+}
+
+.hold {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile {
+    position: absolute;
+    padding: 1rem 0;
+    bottom: 20px;
+}
+
+.app-sidebar-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-sidebar-searchbox {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 0.75rem;
+    height: 3rem;
+    width: 85%;
+    background: #585858;
+    border-radius: 0.5rem;
+    color: #adadad;
+    gap: 0.5rem;
+}
+
+.app-sidebar-searchbox > input {
+    background: inherit;
+    color: #fff;
+    width: 100%;
+    height: 2.5rem;
+}
+
+.app-sidebar-searchbox > input::placeholder {
+    color: #b3b3b3;
+    font-size: inherit;
+}
+
+.app-sidebar-searchbox-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+.app-sidebar-header h1 {
+    margin: 0;
+    font-family: var(--logo);
+}
+
+.app-sidebar-title {
+    color: #fff;
+    height: 1rem;
+    margin: 25px;
+}
+
+.app-sidebar-notes {
+    height: calc(100vh - 78px);
+    overflow-y: scroll;
+}
+
+.app-sidebar-note {
+    padding: 25px;
+    cursor: pointer;
+    transition: background 250ms ease-in-out;
+}
+
+.sidebar-note-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.app-sidebar-note button {
+    color: rgb(255, 53, 53);
+}
+
+.app-sidebar-note p {
+    margin: 10px 0;
+}
+
+.app-sidebar-note small {
+    display: block;
+    color: #828282;
+}
+
+.app-sidebar-note:hover {
+    background: #424242;
+    color: #fff;
+}
+
+.app-sidebar-note.active {
+    /* background: linear-gradient(
+        to right top,
+        #ffb7e0,
+        #f3beed,
+        #e7c5f6,
+        #dbcdfc,
+        #d0d3ff,
+        #c6daff,
+        #bfe0ff,
+        #bce5ff,
+        #b9ecff,
+        #b8f3ff,
+        #b9f9ff,
+        #befffb
+    ); */
+    /* background-image: linear-gradient(
+        to left bottom,
+        #00aa6f,
+        #00a68a,
+        #00a0a0,
+        #0099ad,
+        #0090b1,
+        #0091b3,
+        #0091b5,
+        #0092b7,
+        #009dba,
+        #00a8b9,
+        #00b2b6,
+        #00bcb0
+    ); */
+    color: #fff;
+    background-color: var(--primary3);
+}
+
+.app-sidebar-note.active small {
+    /*color: #424242;*/
+    color: white;
+}
+
+/* NOTE EDITOR/PREVIEW (MAIN) STYLES */
+
+.app-main {
+    width: 100%;
+    height: 100vh;
+}
+
+.app-main-note-edit {
+    background: var(--primary3);
+}
+
+.app-main-note-edit {
+    height: 40vh;
+}
+
+.app-main-note-preview {
+    height: 60vh;
+}
+
+.no-active-note {
+    width: 100%;
+    height: 100vh;
+    line-height: 100vh;
+    text-align: center;
+    font-size: 2rem;
+    color: #999;
+    background: var(--primary3);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Editing */
+.app-main-note-edit {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    gap: 1.5rem;
+}
+
+.app-main-note-edit input,
+textarea {
+    background: #212121;
+    padding: 15px;
+    max-width: 100%;
+    height: 40vh;
+    color: white;
+    resize: none;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.app-main-note-edit input {
+    height: 40px;
+    font-size: 1.5rem;
+}
+
+/* Preview */
+.app-main-note-preview {
+    background: #424242;
+    overflow-y: scroll;
+}
+
+.markdown-preview {
+    padding: 50px;
+    font-size: 1rem;
+    line-height: 2rem;
+    color: white;
+}
+
+.space {
+    height: 4rem;
+    width: 100%;
 }
